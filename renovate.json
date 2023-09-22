@@ -9,6 +9,10 @@
     "replacements:all",
     "workarounds:all"
   ],
+  "enabledManagers": [
+    "github-actions",
+    "nuget"
+  ],
   "labels": [
     "dependencies"
   ],
@@ -38,8 +42,14 @@
       "matchPackagePrefixes": [
         "xunit"
       ]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "Pipeline dependencies"
     }
   ],
   "prConcurrentLimit": 0,
-  "prHourlyLimit": 0
+  "prHourlyLimit": 0,
+  "dependencyDashboard": false,
+  "gitAuthor": "Renovate Bot <bot@renovateapp.com>"
 }
