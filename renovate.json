@@ -1,6 +1,45 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
-  ]
+    ":dependencyDashboard",
+    ":semanticPrefixFixDepsChoreOthers",
+    "group:dotNetCore",
+    "group:monorepos",
+    "group:recommended",
+    "replacements:all",
+    "workarounds:all"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "groupName": "ApplicationInsights",
+      "matchPackagePatterns": [
+        "ApplicationInsights"
+      ]
+    },
+    {
+      "groupName": "Dotnet",
+      "matchPackageNames": [
+        "dotnet-sdk",
+        "mcr.microsoft.com/dotnet/aspnet",
+        "mcr.microsoft.com/dotnet/sdk"
+      ]
+    },
+    {
+      "groupName": "System.CommandLine",
+      "matchPackagePrefixes": [
+        "System.CommandLine"
+      ]
+    },
+    {
+      "groupName": "XUnit",
+      "matchPackagePrefixes": [
+        "xunit"
+      ]
+    }
+  ],
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0
 }
