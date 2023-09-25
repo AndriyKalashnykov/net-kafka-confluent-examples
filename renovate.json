@@ -50,6 +50,6 @@
   ],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
-  "dependencyDashboard": false,
+  "dependencyDashboard": true,
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>"
 }
