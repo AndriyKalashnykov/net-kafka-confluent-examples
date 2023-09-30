@@ -1,10 +1,15 @@
 .DEFAULT_GOAL := help
 
-CONSUMER_IMG ?= confluent-kafka-consumer-net:latest
+CONSUMER_IMG ?= kafka-confluent-net-consumer:latest
 CURRENTTAG:=$(shell git describe --tags --abbrev=0)
 NEWTAG ?= $(shell bash -c 'read -p "Please provide a new tag (currnet tag - ${CURRENTTAG}): " newtag; echo $$newtag')
-GOFLAGS=-mod=mod
-GOPRIVATE=github.com/AndriyKalashnykov/go-kafka-confluent-examples
+
+# include .env
+define setup_env
+$(eval include .env)
+$(eval export $(shell sed -ne 's/ *#.*$$//; /./ s/=.*$$// p' .env))
+endef
+$(eval export $(shell sed -ne 's/ *#.*$$//; /./ s/=.*$$// p' .env))
 
 #help: @ List available tasks
 help:
@@ -15,7 +20,7 @@ help:
 
 #clean: @ Cleanup
 clean:
-	@sudo rm -rf .bin/
+	@rm -rf ./consumer/bin/ ./consumer/bin/
 
 #build: @ Build
 build: clean
@@ -40,15 +45,16 @@ version:
 
 #consumer-image-build: @ Build Consumer Docker image
 consumer-image-build: build
-	@docker build -f consumer/Dockerfile -t ${CONSUMER_IMG} .
+	docker build -t ${CONSUMER_IMG} -f Dockerfile.consumer .
 
 #consumer-image-run: @ Run a Docker image
 consumer-image-run: consumer-image-stop consumer-image-build
-	@docker-compose -f "consumer/docker-compose.yml" up
+	$(call setup_env)
+	@docker-compose -f "docker-compose.yml" up
 
 #consumer-image-stop: @ Run a Docker image
 consumer-image-stop:
-	@docker-compose -f "consumer/docker-compose.yml" down
+	@docker-compose -f "docker-compose.yml" down
 
 #runp: @ Run producer
 runp: build
