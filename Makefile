@@ -50,11 +50,11 @@ consumer-image-build: build
 #consumer-image-run: @ Run a Docker image
 consumer-image-run: consumer-image-stop consumer-image-build
 	$(call setup_env)
-	@docker-compose -f "docker-compose.yml" up
+	docker compose -f "docker-compose.yml" up
 
 #consumer-image-stop: @ Run a Docker image
 consumer-image-stop:
-	@docker-compose -f "docker-compose.yml" down
+	docker compose -f "docker-compose.yml" down
 
 #runp: @ Run producer
 runp: build
