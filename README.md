@@ -1,6 +1,8 @@
 # net-kafka-confluent-examples
 
 ## Requirements
+
+- Linux or Mac OS
 - [.Net](https://learn.microsoft.com/en-us/dotnet/core/install/) .Net 7.0
   ```bash
   sudo apt-get update && sudo apt-get install -y dotnet-sdk-7.0
