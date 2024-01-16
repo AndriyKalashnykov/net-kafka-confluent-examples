@@ -3,15 +3,15 @@
 ## Requirements
 
 - Linux or Mac OS
-- [.Net](https://learn.microsoft.com/en-us/dotnet/core/install/) .Net 7.0
+- [.Net](https://learn.microsoft.com/en-us/dotnet/core/install/) .Net 8.0
   ```bash
-  sudo apt-get update && sudo apt-get install -y dotnet-sdk-7.0
-  sudo apt-get install -y dotnet-runtime-7.0
-  sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-7.0
+  sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
+  sudo apt-get install -y dotnet-runtime-8.0
+  sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-8.0
   ```
 - [Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet)
   ```bash
-  dotnet add package -v 2.2.0 Confluent.Kafka
+  dotnet add package -v 2.3.0 Confluent.Kafka
   ```
 - [docker](https://docs.docker.com/engine/install/)
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
