@@ -77,9 +77,10 @@ k8s-undeploy:
 	kubectl delete -f ./k8s/ns.yaml --ignore-not-found=true
 
 # upgrade outdated https://github.com/NuGet/Home/issues/4103
+#upgrade: @ Upgrade outdated packages
 upgrade:
-	@cd consumer && dotnet list package --outdated | grep -o '> \S.' | grep '[^> ].' -o | awk '{system("dotnet add package "$1 " -v " $4)}'
-	@cd producer && dotnet list package --outdated | grep -o '> \S.' | grep '[^> ].' -o | awk '{system("dotnet add package "$1 " -v " $4)}'
+	@cd consumer && dotnet list package --outdated | grep -o '> \S*' | grep '[^> ]*' -o | xargs --no-run-if-empty -L 1 dotnet add package
+	@cd producer && dotnet list package --outdated | grep -o '> \S*' | grep '[^> ]*' -o | xargs --no-run-if-empty -L 1 dotnet add package
 
 # ssh into pod
 # kubectl exec --stdin --tty -n kafka-confluent-examples kafka-confluent-go-56686b9958-ft2bh -- /bin/sh
