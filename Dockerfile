@@ -1,6 +1,8 @@
-﻿FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
+﻿# https://mcr.microsoft.com/en-us/product/dotnet/runtime/tags
+FROM mcr.microsoft.com/dotnet/runtime:8.0.6 AS base
 WORKDIR /app
 
+# https://mcr.microsoft.com/en-us/product/dotnet/sdk/tags
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["consumer/consumer.csproj", "consumer/"]
