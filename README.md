@@ -11,7 +11,7 @@
   ```
 - [Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet)
   ```bash
-  dotnet add package -v 2.3.0 Confluent.Kafka
+  dotnet add package -v 2.5.0 Confluent.Kafka
   ```
 - [docker](https://docs.docker.com/engine/install/)
 - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
@@ -35,8 +35,7 @@ runp                 - Run producer
 runc                 - Run consumer
 k8s-deploy           - Deploy to a local KinD cluster
 k8s-undeploy         - Undeploy from a local KinD cluster
-
-
+upgrade              - Upgrade outdated packages
 ```
 
 ## References
