@@ -38,15 +38,15 @@ k8s-undeploy         - Undeploy from a local KinD cluster
 upgrade              - Upgrade outdated packages
 ```
 
-## Install Docker Scout
+## Install [Docker Scout](https://www.docker.com/products/docker-scout/)
 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
 ```
 
-## Advanced image analysis with Docker Scout
+## Advanced image analysis with [Docker Scout CLI](https://github.com/docker/scout-cli)
 
-```
+```bash
 docker scout quickview
 ```
 
