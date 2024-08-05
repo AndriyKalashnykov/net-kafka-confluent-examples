@@ -38,6 +38,18 @@ k8s-undeploy         - Undeploy from a local KinD cluster
 upgrade              - Upgrade outdated packages
 ```
 
+## Install Docker Scout
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
+```
+
+## Advanced image analysis with Docker Scout
+
+```
+docker scout quickview
+```
+
 ## References
 
 - [Getting Started with Apache Kafka and .NET](https://developer.confluent.io/get-started/dotnet/#introduction)
