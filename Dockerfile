@@ -1,5 +1,5 @@
 ﻿# https://mcr.microsoft.com/en-us/product/dotnet/runtime/tags
-FROM mcr.microsoft.com/dotnet/runtime:8.0.6 AS base
+FROM mcr.microsoft.com/dotnet/runtime:8.0-cbl-mariner2.0 AS base
 WORKDIR /app
 
 # https://mcr.microsoft.com/en-us/product/dotnet/sdk/tags
