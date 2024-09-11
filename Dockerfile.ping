@@ -1,0 +1,3 @@
+# https://codebuckets.com/2020/08/01/nuget-restore-failing-in-docker-container/
+FROM mcr.microsoft.com/dotnet/core/sdk
+RUN ping google.com

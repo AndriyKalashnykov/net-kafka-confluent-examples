@@ -45,7 +45,7 @@ version:
 
 #consumer-image-build: @ Build Consumer Docker image
 consumer-image-build: build
-	docker build -t ${CONSUMER_IMG} -f Dockerfile .
+	docker build --network=host -t ${CONSUMER_IMG} -f Dockerfile .
 
 #consumer-image-run: @ Run a Docker image
 consumer-image-run: consumer-image-stop consumer-image-build
