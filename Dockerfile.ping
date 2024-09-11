@@ -1,3 +1,5 @@
 # https://codebuckets.com/2020/08/01/nuget-restore-failing-in-docker-container/
+# docker build --network=host -t docker-ping -f Dockerfile.ping .
+
 FROM mcr.microsoft.com/dotnet/core/sdk
-RUN ping google.com
+RUN ping google.com -c 7
