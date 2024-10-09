@@ -12,7 +12,7 @@ mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 ```
 
-or install .Net 8.0 and update [global.json](./global.json) to `"version": "8.0.403"`
+or install .Net 8.0 and update [global.json](./global.json) to `"version": "8.0.0"`
 
   ```bash
   sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
