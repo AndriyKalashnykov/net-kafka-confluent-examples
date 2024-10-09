@@ -6,7 +6,7 @@
 
 ### Linux manual 
 
-Download  [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and 
+Download [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and run follwing commands:
 
 ```bash
 DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-8.0.403-linux-x64.tar.gz
