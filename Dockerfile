@@ -12,11 +12,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0.403 AS build
 #RUN update-ca-certificates
 
 WORKDIR /src
-COPY ["consumer/consumer.csproj", "consumer/"]
-COPY ["consumer/nuget.config", "consumer/"]
+COPY ./consumer ./consumer
+COPY kafka.properties .
 RUN dotnet restore "consumer/consumer.csproj"
-COPY . .
-WORKDIR "/src/consumer"
+
+WORKDIR /src/consumer
 RUN dotnet build "consumer.csproj" --no-restore -c Release -o /app/build
 
 FROM build AS publish
