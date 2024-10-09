@@ -17,6 +17,8 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
 ### Linux package manager
 
+Run the following commands:
+
   ```bash
   sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
   sudo apt-get install -y dotnet-runtime-8.0
@@ -28,7 +30,8 @@ and update [global.json](./global.json) to `"version": "8.0.0"`
 ### Note on Confluent's .NET Client for Apache Kafka 
 
 
-[Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) dependency can be added to .Net project as following:
+[Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) dependency can be added to .Net project as following
+
 ```bash
   dotnet add package -v 2.5.0 Confluent.Kafka
 ```
