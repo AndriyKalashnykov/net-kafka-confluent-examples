@@ -4,6 +4,13 @@ WORKDIR /app
 
 # https://mcr.microsoft.com/en-us/product/dotnet/sdk/tags
 FROM mcr.microsoft.com/dotnet/sdk:8.0.403 AS build
+
+# workaround for environments where Netskope prevents nuget to use https
+WORKDIR /netskope
+COPY . .
+RUN cp ./netskope/*.pem /usr/local/share/ca-certificates/
+RUN update-ca-certificates
+
 WORKDIR /src
 COPY ["consumer/consumer.csproj", "consumer/"]
 RUN dotnet restore "consumer/consumer.csproj"
