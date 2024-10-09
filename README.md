@@ -2,8 +2,11 @@
 
 ## Requirements
 
-- Linux
-- [.Net](https://learn.microsoft.com/en-us/dotnet/core/install/) .Net 8.0.x
+## .Net 8
+
+### Linux manual 
+
+[.Net](https://learn.microsoft.com/en-us/dotnet/core/install/) .Net 8.0.x
 Download  [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 ```bash
 DOTNET_FILE=~/Downloads/dotnet-sdk-8.0.403-linux-x64.tar.gz
@@ -12,20 +15,35 @@ mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 ```
 
-or install .Net 8.0 and update [global.json](./global.json) to `"version": "8.0.0"`
+### Linux package manager
+
+Install .Net 8.0 
 
   ```bash
   sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
   sudo apt-get install -y dotnet-runtime-8.0
   sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-8.0
   ```
-- [Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet)
+
+and update [global.json](./global.json) to `"version": "8.0.0"`
+
+### Note on Confluent's .NET Client for Apache Kafka 
+
+[Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet)
   ```bash
   dotnet add package -v 2.5.0 Confluent.Kafka
   ```
-- [docker](https://docs.docker.com/engine/install/)
-- [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+## Docker
+
+Install [Docker](https://docs.docker.com/engine/install/)
+
+## KinD
+
+Install [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+
+## kubectl
+
+Install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 
 ## Help
 
