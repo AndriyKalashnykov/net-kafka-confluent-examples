@@ -20,8 +20,8 @@
   "packageRules": [
     {
       "groupName": "ApplicationInsights",
-      "matchPackagePatterns": [
-        "ApplicationInsights"
+      "matchPackageNames": [
+        "/ApplicationInsights/"
       ]
     },
     {
@@ -40,18 +40,20 @@
     },
     {
       "groupName": "System.CommandLine",
-      "matchPackagePrefixes": [
-        "System.CommandLine"
+      "matchPackageNames": [
+        "System.CommandLine{/,}**"
       ]
     },
     {
       "groupName": "XUnit",
-      "matchPackagePrefixes": [
-        "xunit"
+      "matchPackageNames": [
+        "xunit{/,}**"
       ]
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "Pipeline dependencies"
     }
   ],
