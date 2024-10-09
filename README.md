@@ -6,11 +6,11 @@
 
 ### Linux manual 
 
-Download  [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+Download  [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and 
 
 ```bash
-DOTNET_FILE=~/Downloads/dotnet-sdk-8.0.403-linux-x64.tar.gz
-export DOTNET_ROOT=/home/andriy/.dotnet
+DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-8.0.403-linux-x64.tar.gz
+export DOTNET_ROOT=/home/$USER/.dotnet
 mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 ```
