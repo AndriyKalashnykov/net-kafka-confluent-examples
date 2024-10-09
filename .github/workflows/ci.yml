@@ -21,4 +21,4 @@ jobs:
             8.0.403
 
       - name: Build
-        run: make build
+        run: make build consumer-image-build
