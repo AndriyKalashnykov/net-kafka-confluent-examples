@@ -7,7 +7,8 @@
     "group:monorepos",
     "group:recommended",
     "replacements:all",
-    "workarounds:all"
+    "workarounds:all",
+    "config:best-practices"
   ],
   "enabledManagers": [
     "github-actions",
@@ -28,7 +29,13 @@
       "matchPackageNames": [
         "dotnet-sdk",
         "mcr.microsoft.com/dotnet/aspnet",
-        "mcr.microsoft.com/dotnet/sdk"
+        "mcr.microsoft.com/dotnet/sdk",
+        "mcr.microsoft.com/dotnet/runtime",
+        "mcr.microsoft.com/dotnet/runtime-deps"
+      ],
+      "extends": [
+        ":disableMajorUpdates",
+        ":pinDigestsDisabled"
       ]
     },
     {
