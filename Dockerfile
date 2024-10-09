@@ -6,20 +6,21 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0.403 AS build
 
 # workaround for environments where Netskope prevents nuget to use https
-WORKDIR /netskope
-COPY . .
-RUN cp ./netskope/*.pem /usr/local/share/ca-certificates/
-RUN update-ca-certificates
+#WORKDIR /netskope
+#COPY . .
+#RUN cp ./netskope/*.pem /usr/local/share/ca-certificates/
+#RUN update-ca-certificates
 
 WORKDIR /src
 COPY ["consumer/consumer.csproj", "consumer/"]
+COPY ["consumer/nuget.config", "consumer/"]
 RUN dotnet restore "consumer/consumer.csproj"
 COPY . .
 WORKDIR "/src/consumer"
 RUN dotnet build "consumer.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "consumer.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "consumer.csproj" --no-restore -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
