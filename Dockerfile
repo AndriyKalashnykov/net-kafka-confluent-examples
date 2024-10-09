@@ -17,7 +17,7 @@ COPY ["consumer/nuget.config", "consumer/"]
 RUN dotnet restore "consumer/consumer.csproj"
 COPY . .
 WORKDIR "/src/consumer"
-RUN dotnet build "consumer.csproj" -c Release -o /app/build
+RUN dotnet build "consumer.csproj" --no-restore -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "consumer.csproj" --no-restore -c Release -o /app/publish /p:UseAppHost=false
