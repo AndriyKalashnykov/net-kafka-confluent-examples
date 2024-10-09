@@ -6,8 +6,8 @@
 
 ### Linux manual 
 
-[.Net](https://learn.microsoft.com/en-us/dotnet/core/install/) .Net 8.0.x
 Download  [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
 ```bash
 DOTNET_FILE=~/Downloads/dotnet-sdk-8.0.403-linux-x64.tar.gz
 export DOTNET_ROOT=/home/andriy/.dotnet
@@ -16,8 +16,6 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 ```
 
 ### Linux package manager
-
-Install .Net 8.0 
 
   ```bash
   sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
@@ -29,10 +27,12 @@ and update [global.json](./global.json) to `"version": "8.0.0"`
 
 ### Note on Confluent's .NET Client for Apache Kafka 
 
-[Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet)
-  ```bash
+
+[Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) dependency can be added to .Net project as following:
+```bash
   dotnet add package -v 2.5.0 Confluent.Kafka
-  ```
+```
+
 ## Docker
 
 Install [Docker](https://docs.docker.com/engine/install/)
