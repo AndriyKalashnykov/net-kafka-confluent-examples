@@ -78,7 +78,7 @@ k8s-undeploy:
 
 # upgrade outdated https://github.com/NuGet/Home/issues/4103
 #upgrade: @ Upgrade outdated packages
-upgrade:
+update:
 	@cd consumer && dotnet list package --outdated | grep -o '> \S*' | grep '[^> ]*' -o | xargs --no-run-if-empty -L 1 dotnet add package
 	@cd producer && dotnet list package --outdated | grep -o '> \S*' | grep '[^> ]*' -o | xargs --no-run-if-empty -L 1 dotnet add package
 
