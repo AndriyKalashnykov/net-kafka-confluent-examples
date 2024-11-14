@@ -2,14 +2,14 @@
 
 ## Requirements
 
-## .Net 8
+## .Net 9
 
 ### Linux manual 
 
-Download [.Net 8.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and run follwing commands:
+Download [.Net 9.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and run follwing commands:
 
 ```bash
-DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-8.0.403-linux-x64.tar.gz
+DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-9.0.100-linux-x64.tar.gz
 export DOTNET_ROOT=/home/$USER/.dotnet
 mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
@@ -20,12 +20,12 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 Run the following commands:
 
   ```bash
-  sudo apt-get update && sudo apt-get install -y dotnet-sdk-8.0
-  sudo apt-get install -y dotnet-runtime-8.0
-  sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-8.0
+  sudo apt-get update && sudo apt-get install -y dotnet-sdk-9.0
+  sudo apt-get install -y dotnet-runtime-9.0
+  sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-9.0
   ```
 
-and update [global.json](./global.json) to `"version": "8.0.0"`
+and update [global.json](./global.json) to `"version": "9.0.0"`
 
 ### Note on Confluent's .NET Client for Apache Kafka 
 
@@ -33,7 +33,7 @@ and update [global.json](./global.json) to `"version": "8.0.0"`
 [Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) dependency can be added to .Net project as following
 
 ```bash
-  dotnet add package -v 2.5.0 Confluent.Kafka
+  dotnet add package -v 2.6.0 Confluent.Kafka
 ```
 
 ## Docker
