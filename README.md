@@ -9,7 +9,7 @@
 Download [.Net 9.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and run follwing commands:
 
 ```bash
-DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-9.0.100-linux-x64.tar.gz
+DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-9.0.101-linux-x64.tar.gz
 export DOTNET_ROOT=/home/$USER/.dotnet
 mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
