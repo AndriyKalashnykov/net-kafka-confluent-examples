@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-dotnet@87b7050bc53ea08284295505d98d2aa94301e852 # v4
         with:
           dotnet-version: |
-            9.0.101
+            9.x
 
       - name: Build
         run: make build consumer-image-build
