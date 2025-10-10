@@ -1,11 +1,13 @@
-name: CI
+name: ci
 
 on:
   push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
+permissions:
+  contents: write
+  packages: write
+  
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -15,10 +17,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5
-        with:
-          dotnet-version: |
-            9.x
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5
+        # No need to specify dotnet-version - it will automatically use the version from global.json
 
       - name: Build
         run: make build consumer-image-build
