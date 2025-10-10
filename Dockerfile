@@ -1,9 +1,9 @@
 ﻿# https://mcr.microsoft.com/en-us/product/dotnet/runtime/tags
-FROM mcr.microsoft.com/dotnet/runtime:8.0.11-cbl-mariner2.0 AS base
+FROM mcr.microsoft.com/dotnet/runtime:8.0.20-cbl-mariner2.0 AS base
 WORKDIR /app
 
 # https://mcr.microsoft.com/en-us/product/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk:9.0.101 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0.305 AS build
 
 # workaround for environments where Netskope prevents nuget to use https
 #WORKDIR /netskope
