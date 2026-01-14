@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/runtime:10.0-azurelinux3.0 AS base
 WORKDIR /app
 
 # https://mcr.microsoft.com/en-us/product/dotnet/sdk/tags
-FROM mcr.microsoft.com/dotnet/sdk:10.0.101 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0.102 AS build
 
 # workaround for environments where Netskope prevents nuget to use https
 #WORKDIR /netskope
