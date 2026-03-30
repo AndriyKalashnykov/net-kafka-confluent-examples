@@ -1,0 +1,67 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    ":semanticCommitType(chore)"
+  ],
+  "commitMessagePrefix": "chore(all): ",
+  "commitMessageAction": "update",
+  "commitBody": "Signed-off-by: Renovate Bot <bot@renovateapp.com>",
+  "labels": ["dependencies"],
+  "prConcurrentLimit": 50,
+  "prHourlyLimit": 0,
+  "platformAutomerge": true,
+  "automerge": true,
+  "automergeType": "branch",
+  "automergeStrategy": "squash",
+  "ignoreTests": false,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true,
+    "minimumReleaseAge": "0 days"
+  },
+  "packageRules": [
+    {
+      "description": "Wait 3 days before automerging major updates",
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "description": "Group GitHub Actions into one PR",
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "description": "Group .NET Docker images, disable major updates",
+      "groupName": "Dotnet Docker images",
+      "matchPackageNames": [
+        "dotnet-sdk",
+        "mcr.microsoft.com/dotnet/aspnet",
+        "mcr.microsoft.com/dotnet/sdk",
+        "mcr.microsoft.com/dotnet/runtime",
+        "mcr.microsoft.com/dotnet/runtime-deps"
+      ],
+      "extends": [":disableMajorUpdates", ":pinDigestsDisabled"]
+    },
+    {
+      "description": "Group XUnit test dependencies",
+      "groupName": "XUnit",
+      "matchPackageNames": ["/^xunit/"]
+    },
+    {
+      "description": "Group ApplicationInsights packages",
+      "groupName": "ApplicationInsights",
+      "matchPackageNames": ["/ApplicationInsights/"]
+    },
+    {
+      "description": "Group System.CommandLine packages",
+      "groupName": "System.CommandLine",
+      "matchPackageNames": ["/^System\\.CommandLine/"]
+    },
+    {
+      "description": "Group Docker base images",
+      "matchDatasources": ["docker"],
+      "groupName": "Docker dependencies"
+    }
+  ]
+}
