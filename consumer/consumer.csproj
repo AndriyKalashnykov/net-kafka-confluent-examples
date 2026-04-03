@@ -5,6 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <StartupObject>Consumer</StartupObject>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

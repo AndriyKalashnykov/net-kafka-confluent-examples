@@ -15,6 +15,13 @@ class Consumer {
             .AddIniFile(args[0])
             .Build();
 
+        var saslUsername = Environment.GetEnvironmentVariable("SASL_USERNAME");
+        var saslPassword = Environment.GetEnvironmentVariable("SASL_PASSWORD");
+        if (!string.IsNullOrEmpty(saslUsername))
+            configuration["sasl.username"] = saslUsername;
+        if (!string.IsNullOrEmpty(saslPassword))
+            configuration["sasl.password"] = saslPassword;
+
         configuration["group.id"] = "kafka-dotnet-getting-started";
         configuration["auto.offset.reset"] = "latest";
 

@@ -1,85 +1,78 @@
+[![CI](https://github.com/AndriyKalashnykov/net-kafka-confluent-examples/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/AndriyKalashnykov/net-kafka-confluent-examples/actions/workflows/ci.yml)
+[![Hits](https://hits.sh/github.com/AndriyKalashnykov/net-kafka-confluent-examples.svg?view=today-total&style=plastic)](https://hits.sh/github.com/AndriyKalashnykov/net-kafka-confluent-examples/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://app.renovatebot.com/dashboard#github/AndriyKalashnykov/net-kafka-confluent-examples)
+
 # net-kafka-confluent-examples
 
-## Requirements
+C#/.NET 10 Kafka producer and consumer examples using [Confluent.Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) client library, connecting to Confluent Cloud via SASL_SSL. Includes Docker containerization and Kubernetes deployment to a local KinD cluster.
 
-## .Net 9
-
-### Linux manual 
-
-Download [.Net 9.0.x](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and run follwing commands:
+## Quick Start
 
 ```bash
-DOTNET_FILE=/home/$USER//Downloads/dotnet-sdk-9.0.101-linux-x64.tar.gz
-export DOTNET_ROOT=/home/$USER/.dotnet
-mkdir -p "$DOTNET_ROOT" && tar zxf "$DOTNET_FILE" -C "$DOTNET_ROOT"
-export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+cp .env-sample .env     # configure SASL credentials
+make build              # build producer and consumer
+make producer-run       # send 10 messages to test-topic
+make consumer-run       # subscribe to test-topic (Ctrl-C to stop)
 ```
 
-### Linux package manager
+## Prerequisites
 
-Run the following commands:
+| Tool | Version | Purpose |
+|------|---------|---------|
+| [.NET SDK](https://dotnet.microsoft.com/download) | 10.0+ | Build and run C# applications |
+| [Docker](https://www.docker.com/) | latest | Container image builds |
+| [kubectl](https://kubernetes.io/docs/tasks/tools/) | latest | Kubernetes deployments (optional) |
+| [KinD](https://kind.sigs.k8s.io/) | latest | Local Kubernetes cluster (optional) |
 
-  ```bash
-  sudo apt-get update && sudo apt-get install -y dotnet-sdk-9.0
-  sudo apt-get install -y dotnet-runtime-9.0
-  sudo apt-get update && sudo apt-get install -y aspnetcore-runtime-9.0
-  ```
+## Available Make Targets
 
-and update [global.json](./global.json) to `"version": "9.0.0"`
+Run `make help` to see all available targets.
 
-### Note on Confluent's .NET Client for Apache Kafka 
+### Build & Run
 
+| Target | Description |
+|--------|-------------|
+| `make build` | Build producer and consumer |
+| `make producer-run` | Run producer |
+| `make consumer-run` | Run consumer |
+| `make clean` | Cleanup build artifacts |
 
-[Confluent's .NET Client for Apache Kafka](https://github.com/confluentinc/confluent-kafka-dotnet) dependency can be added to .Net project as following
+### Docker
 
-```bash
-  dotnet add package -v 2.6.0 Confluent.Kafka
-```
+| Target | Description |
+|--------|-------------|
+| `make image-build` | Build Consumer Docker image |
+| `make image-run` | Run Consumer Docker image |
+| `make image-stop` | Stop Consumer Docker image |
 
-## Docker
+### CI
 
-Install [Docker](https://docs.docker.com/engine/install/)
+| Target | Description |
+|--------|-------------|
+| `make lint` | Lint Dockerfile with hadolint |
+| `make ci` | Run full local CI pipeline |
+| `make ci-run` | Run GitHub Actions workflow locally using [act](https://github.com/nektos/act) |
 
-## KinD
+### Utilities
 
-Install [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+| Target | Description |
+|--------|-------------|
+| `make update` | Upgrade outdated packages |
+| `make release` | Create and push a new tag |
+| `make version` | Print current version(tag) |
+| `make renovate-validate` | Validate Renovate configuration |
 
-## kubectl
+## CI/CD
 
-Install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+GitHub Actions runs on every push to `main`, tags `v*`, and pull requests.
 
-## Help
+| Job | Triggers | Steps |
+|-----|----------|-------|
+| **static-check** | push, PR, tags | Lint (hadolint) |
+| **build** | after static-check | .NET build, Docker image build |
 
-```bash
-$ make
-Usage: make COMMAND
-Commands :
-help                 - List available tasks
-clean                - Cleanup
-build                - Build
-release              - Create and push a new tag
-version              - Print current version(tag)
-consumer-image-build - Build Consumer Docker image
-consumer-image-run   - Run a Docker image
-consumer-image-stop  - Run a Docker image
-runp                 - Run producer
-runc                 - Run consumer
-k8s-deploy           - Deploy to a local KinD cluster
-k8s-undeploy         - Undeploy from a local KinD cluster
-upgrade              - Upgrade outdated packages
-```
-
-## Install [Docker Scout](https://www.docker.com/products/docker-scout/)
-
-```bash
-curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
-```
-
-## Advanced image analysis with [Docker Scout CLI](https://github.com/docker/scout-cli)
-
-```bash
-docker scout quickview
-```
+[Renovate](https://docs.renovatebot.com/) keeps dependencies up to date with platform automerge enabled.
 
 ## References
 

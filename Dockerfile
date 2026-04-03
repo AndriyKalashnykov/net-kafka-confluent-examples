@@ -23,7 +23,14 @@ FROM build AS publish
 RUN dotnet publish "consumer.csproj" --no-restore -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
+
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=build /src/kafka.properties .
+
+USER app
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD dotnet --info || exit 1
+
 ENTRYPOINT ["dotnet", "consumer.dll", "kafka.properties"]

@@ -4,6 +4,7 @@
     "config:best-practices",
     ":semanticCommitType(chore)"
   ],
+  "enabledManagers": ["github-actions", "nuget", "dockerfile", "docker-compose"],
   "commitMessagePrefix": "chore(all): ",
   "commitMessageAction": "update",
   "commitBody": "Signed-off-by: Renovate Bot <bot@renovateapp.com>",
@@ -42,26 +43,6 @@
         "mcr.microsoft.com/dotnet/runtime-deps"
       ],
       "extends": [":disableMajorUpdates", ":pinDigestsDisabled"]
-    },
-    {
-      "description": "Group XUnit test dependencies",
-      "groupName": "XUnit",
-      "matchPackageNames": ["/^xunit/"]
-    },
-    {
-      "description": "Group ApplicationInsights packages",
-      "groupName": "ApplicationInsights",
-      "matchPackageNames": ["/ApplicationInsights/"]
-    },
-    {
-      "description": "Group System.CommandLine packages",
-      "groupName": "System.CommandLine",
-      "matchPackageNames": ["/^System\\.CommandLine/"]
-    },
-    {
-      "description": "Group Docker base images",
-      "matchDatasources": ["docker"],
-      "groupName": "Docker dependencies"
     }
   ]
 }

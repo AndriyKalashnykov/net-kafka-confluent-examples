@@ -5,19 +5,29 @@ on:
     branches: [main]
     tags: ['v*']
   pull_request:
+  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
-  contents: write
-  packages: write
-  
-jobs:
-  ci:
-    runs-on: ubuntu-latest
+  contents: read
 
+jobs:
+  static-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Lint
+        run: make lint
+
+  build:
+    needs: [static-check]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
@@ -25,7 +35,9 @@ jobs:
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5
-        # No need to specify dotnet-version - it will automatically use the version from global.json
 
       - name: Build
-        run: make build consumer-image-build
+        run: make build
+
+      - name: Build Docker image
+        run: make image-build
