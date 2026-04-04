@@ -4,7 +4,7 @@
     "config:best-practices",
     ":semanticCommitType(chore)"
   ],
-  "enabledManagers": ["github-actions", "nuget", "dockerfile", "docker-compose"],
+  "enabledCategories": ["ci", "dotnet", "docker"],
   "commitMessagePrefix": "chore(all): ",
   "commitMessageAction": "update",
   "commitBody": "Signed-off-by: Renovate Bot <bot@renovateapp.com>",
@@ -29,7 +29,7 @@
     },
     {
       "description": "Group GitHub Actions into one PR",
-      "matchManagers": ["github-actions"],
+      "matchCategories": ["ci"],
       "groupName": "GitHub Actions"
     },
     {
